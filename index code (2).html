@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Creation Agency Landing Page</title>
+  <style>
+    :root {
+      --bg: #f9f9f6;
+      --surface: #f4f4f1;
+      --chip: #e8e8e5;
+      --line: #e2e3e0;
+      --ink: #1a1c1b;
+      --muted: #444748;
+      --accent: #4a6800;
+      --lime: #c5f36b;
+      --dark: #171717;
+      --serif: "Liberation Serif", "Times New Roman", Times, serif;
+      --sans: Inter, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    p { margin: 0; }
+    img, svg { display: block; max-width: 100%; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; width: 100%; }
+    .section { padding: 96px 24px; }
+    .stack { display: flex; flex-direction: column; gap: 64px; max-width: 1280px; margin: 0 auto; }
+
+    /* Typography */
+    .eyebrow {
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .h2 {
+      font-family: var(--serif);
+      font-size: 40px;
+      line-height: 46px;
+      letter-spacing: -0.8px;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 0;
+    }
+    .h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 34px;
+      letter-spacing: -0.28px;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 0;
+    }
+    .h4 {
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 26px;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 0;
+    }
+    .body-text { color: var(--muted); }
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 576px;
+    }
+    .section-head .body-text { padding-top: 4px; }
+
+    /* Buttons & links */
+    .btn-dark, .btn-light, .btn-lime {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 24px;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s ease;
+    }
+    .btn-dark { background: #000; color: #fff; padding: 16px; box-shadow: 0 1px 1px rgba(0,0,0,.05); }
+    .btn-light { background: var(--chip); color: var(--ink); padding: 16px; }
+    .btn-lime { background: var(--lime); color: var(--dark); padding: 16px 64px; }
+    .btn-dark:hover, .btn-light:hover, .btn-lime:hover { opacity: .88; }
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--ink);
+    }
+    .link svg { width: 11px; height: 11px; }
+    .link:hover { text-decoration: underline; }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(249, 249, 246, .8);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 1px 8px rgba(0,0,0,.04);
+    }
+    .header-inner {
+      height: 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.4px;
+      text-transform: uppercase;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a { font-size: 15px; line-height: 24px; color: var(--muted); }
+    .nav a.active {
+      background: #1c1b1b;
+      color: #858383;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 0 4px;
+    }
+    .header-cta { display: flex; align-items: center; gap: 16px; }
+    .header-cta .btn-dark { padding: 8px 16px; }
+    .header-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-icon svg { width: 12px; height: 12px; }
+
+    /* Hero */
+    .hero { padding: 160px 24px 128px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--chip);
+      border-radius: 12px;
+      padding: 4px 12px;
+      font-size: 16px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 56px;
+      line-height: 60px;
+      letter-spacing: -1.4px;
+      color: var(--ink);
+      margin: 0 0 24px;
+    }
+    .hero-lead {
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--muted);
+      max-width: 672px;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+    .hero-actions .btn-dark, .hero-actions .btn-light { padding: 16px 16px; }
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hcard { position: relative; }
+    .hcard-glow {
+      position: absolute;
+      inset: -16px;
+      border-radius: 16px;
+      background: linear-gradient(38deg, rgba(74,104,0,.1) 0%, rgba(74,104,0,0) 100%);
+      filter: blur(24px);
+      z-index: 0;
+    }
+    .hcard-body {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1);
+    }
+    .hcard-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 17px;
+      border-bottom: 1px solid #eeeeeb;
+    }
+    .traffic { display: flex; gap: 8px; }
+    .traffic span { width: 12px; height: 12px; border-radius: 50%; }
+    .hcard-url {
+      font-size: 11px;
+      letter-spacing: .55px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .phase {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .phase small {
+      display: block;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .phase strong {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .pill {
+      padding: 4px 8px;
+      border-radius: 2px;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--muted);
+    }
+    .pill.active { background: #c4f26a; color: #4e6e00; }
+
+    /* Selected work */
+    .work {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 32px;
+      background: var(--surface);
+      padding: 32px;
+      border-radius: 16px;
+      align-items: center;
+    }
+    .work-mock {
+      grid-column: 1 / span 7;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+      aspect-ratio: 668 / 373;
+    }
+    /* CSS illustration standing in for the "Aura Architects Mockup" image */
+    .mock-art {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #fbfaf6 0%, #efece4 100%);
+      position: relative;
+    }
+    .mock-art::before {
+      content: "";
+      position: absolute;
+      left: 12%; right: 12%; top: 18%; bottom: 22%;
+      background: #e3dfd4;
+      border-radius: 4px;
+    }
+    .mock-art::after {
+      content: "";
+      position: absolute;
+      left: 28%; right: 28%; top: 30%; bottom: 34%;
+      background: linear-gradient(180deg, #d8d1c0, #c9c0ab);
+      border-radius: 2px;
+    }
+    .work-info {
+      grid-column: 8 / span 5;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--chip);
+      border-radius: 2px;
+      padding: 4px 8px;
+      font-size: 12px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* Problem cards */
+    .cards-3 { display: flex; gap: 32px; justify-content: center; align-items: stretch; }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1 0 0;
+      min-width: 0;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      background: var(--chip);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg { width: 22px; height: 22px; }
+    .card .h3 { font-size: 20px; line-height: 26px; padding-top: 12px; }
+    .card .body-text { font-size: 16px; line-height: 24px; }
+
+    /* Services */
+    .services { display: flex; gap: 32px; justify-content: center; }
+    .service {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1 0 0;
+      min-width: 0;
+    }
+    .service-body { display: flex; flex-direction: column; gap: 16px; padding-bottom: 32px; }
+    .service-body .line { width: 100%; height: 11px; }
+    .service-body .line svg { width: 100%; height: 11px; }
+    .service-list { display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
+    .service-list li { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+    .service-list .dot { width: 6px; height: 6px; }
+
+    /* How we work */
+    .process { display: flex; gap: 24px; justify-content: center; }
+    .step {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1 0 0;
+      min-width: 0;
+    }
+    .step .line { width: 100%; height: 11px; }
+    .step .line svg { width: 100%; height: 11px; }
+    .step .h4 { font-size: 16px; line-height: 24px; padding-top: 8px; }
+    .step .body-text { font-size: 16px; line-height: 24px; }
+
+    /* Why choose us */
+    .why { display: flex; gap: 32px; justify-content: center; }
+    .why-card {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1 0 0;
+      min-width: 0;
+    }
+    .why-card svg { width: 26px; height: 26px; }
+    .why-card .h4 { font-size: 16px; line-height: 24px; padding-top: 8px; }
+    .why-card .body-text { font-size: 16px; line-height: 24px; }
+
+    /* Who we work with */
+    .clients {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .client {
+      background: #fff;
+      border-radius: 8px;
+      height: 88px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .client span { font-family: var(--serif); font-size: 16px; line-height: 24px; color: var(--ink); }
+    .client svg { width: 13px; height: 13px; }
+
+    /* Our difference */
+    .diff {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 48px;
+      align-items: center;
+    }
+    .diff-text { grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 24px; }
+    .diff-list { display: flex; flex-direction: column; gap: 16px; padding-top: 16px; }
+    .diff-list li { display: flex; align-items: center; gap: 16px; }
+    .diff-list .dot { width: 8px; height: 8px; }
+    .diff-list span { font-family: var(--serif); font-size: 16px; line-height: 24px; color: var(--ink); }
+    .diff-visual {
+      grid-column: 7 / span 6;
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .skel { background: var(--line); border-radius: 2px; }
+    .skel.s1 { height: 12px; width: 176px; }
+    .skel.s2 { height: 32px; width: 396px; max-width: 100%; }
+    .skel.s3 { height: 96px; width: 100%; }
+
+    /* Final CTA + form */
+    .cta {
+      background: var(--dark);
+      padding: 96px 192px;
+    }
+    .cta-inner {
+      max-width: 896px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+    .cta h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -1.5px;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+    }
+    .cta-sub {
+      color: #a3a3a3;
+      text-align: center;
+      max-width: 576px;
+    }
+    .cta-form {
+      width: 100%;
+      max-width: 576px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: #1f1f1f;
+      border: 1px solid #2e2e2e;
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field span { color: #a3a3a3; font-size: 14px; line-height: 20px; }
+    .field input {
+      background: #171717;
+      border: 1px solid #3a3a3a;
+      border-radius: 4px;
+      padding: 14px 16px;
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 16px;
+      outline: none;
+    }
+    .field input::placeholder { color: #6b6b6b; }
+    .field input:focus { border-color: var(--lime); }
+    .submit-btn {
+      background: var(--lime);
+      color: var(--dark);
+      border: none;
+      border-radius: 4px;
+      padding: 16px;
+      font-family: var(--sans);
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .submit-btn:disabled { opacity: .6; cursor: not-allowed; }
+    .form-status {
+      min-height: 24px;
+      font-size: 15px;
+      text-align: center;
+      color: #a3a3a3;
+    }
+    .form-status.ok { color: var(--lime); }
+    .form-status.err { color: #ff8a80; }
+
+    /* Footer */
+    .footer { background: var(--surface); padding: 80px 24px; }
+    .footer-grid {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-col { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .footer-col h4 {
+      margin: 0;
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .footer-col .muted { color: var(--muted); }
+    .footer-col li { color: var(--muted); }
+    .footer-col li a:hover { color: var(--ink); }
+    .footer-brand {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -.4px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .footer-rule {
+      border-top: 1px solid #eeeeeb;
+      max-width: 1280px;
+      margin: 48px auto 0;
+      padding-top: 33px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .small { font-size: 13px; line-height: 20px; color: var(--muted); }
+    .small-links { display: flex; gap: 16px; }
+    .small-links a:hover { color: var(--ink); }
+
+    .footer-bottom {
+      background: var(--surface);
+      padding: 0 24px 64px;
+    }
+    .footer-bottom-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .h2 { font-size: 34px; line-height: 40px; }
+      .hero h1 { font-size: 44px; line-height: 50px; }
+      .cta { padding: 96px 24px; }
+      .cta h2 { font-size: 46px; line-height: 52px; }
+      .services, .process, .why, .cards-3 { flex-wrap: wrap; }
+      .service, .step, .why-card, .card { flex: 1 0 calc(50% - 16px); }
+    }
+
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .hero { padding: 128px 24px 96px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+      .work { grid-template-columns: 1fr; }
+      .work-mock, .work-info { grid-column: 1 / -1; }
+      .diff { grid-template-columns: 1fr; }
+      .diff-text, .diff-visual { grid-column: 1 / -1; }
+      .clients { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-grid { flex-wrap: wrap; }
+      .footer-col { flex: 1 0 calc(50% - 24px); }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 72px 24px; }
+      .stack { gap: 48px; }
+      .h2 { font-size: 30px; line-height: 36px; }
+      .hero h1 { font-size: 36px; line-height: 42px; letter-spacing: -.8px; }
+      .hero-lead { font-size: 16px; line-height: 26px; }
+      .cards-3, .services, .process, .why { flex-direction: column; }
+      .service, .step, .why-card, .card { flex: none; width: 100%; }
+      .clients { grid-template-columns: 1fr; }
+      .cta h2 { font-size: 36px; line-height: 42px; }
+      .cta-form { padding: 24px; }
+      .btn-lime { padding: 16px 32px; width: 100%; }
+      .footer-col { flex: none; width: 100%; }
+      .header-cta .btn-dark { font-size: 14px; padding: 8px 12px; }
+      .header-icon { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#top" class="brand">[YOUR BRAND NAME]</a>
+      <nav class="nav">
+        <a href="#top" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#process">Our Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#contact" class="btn-dark">Let's Build Your Website</a>
+        <a href="#contact" class="header-icon" aria-label="Contact">
+          <svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-eyebrow">Strategy. Content. Website Management.</span>
+          <h1>Your Website Deserves More<br>Than Just Good Design.</h1>
+          <p class="hero-lead">We help individuals and businesses turn their ideas into powerful online experiences through smart strategy, compelling website content, and seamless project management.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-dark">Start Your Website Project</a>
+            <a href="#services" class="btn-light">Explore Our Services</a>
+          </div>
+          <div class="hero-note">
+            <span class="dot"></span>
+            <span>From the first idea to a website ready for the world.</span>
+          </div>
+        </div>
+
+        <div class="hcard">
+          <div class="hcard-glow"></div>
+          <div class="hcard-body">
+            <div class="hcard-top">
+              <div class="traffic">
+                <span style="background: rgba(186,26,26,.4)"></span>
+                <span style="background: rgba(210,234,187,.4)"></span>
+                <span style="background: rgba(74,104,0,.4)"></span>
+              </div>
+              <div class="hcard-url">vistar-dashboard.io</div>
+            </div>
+            <div class="phase">
+              <div>
+                <small>Phase 01</small>
+                <strong>Digital Architecture</strong>
+              </div>
+              <span class="pill active">Active</span>
+            </div>
+            <div class="phase">
+              <div>
+                <small>Phase 02</small>
+                <strong>Content Scripting</strong>
+              </div>
+              <span class="pill">88%</span>
+            </div>
+            <div class="phase">
+              <div>
+                <small>Phase 03</small>
+                <strong>Seamless Launch</strong>
+              </div>
+              <span class="pill">Pending</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SELECTED WORK #1 ============ -->
+    <section class="section">
+      <div class="stack">
+        <div class="section-head">
+          <span class="eyebrow">Selected Work</span>
+          <h2 class="h2">Real Results. Exceptional Digital<br>Experiences.</h2>
+          <p class="body-text">Explore recent website transformations and digital foundations we have<br>built for ambitious brands.</p>
+        </div>
+        <div class="work">
+          <div class="work-mock"><div class="mock-art" role="img" aria-label="Aura Architects mockup"></div></div>
+          <div class="work-info">
+            <div class="tags">
+              <span class="tag">Strategy</span>
+              <span class="tag">Copywriting</span>
+              <span class="tag">Architecture</span>
+            </div>
+            <h3 class="h3">Aura Architects / Rendered Spaces</h3>
+            <p class="body-text">Editorial design aesthetic with clean typography, high-end agency presentation, and a warm off-white background.</p>
+            <a href="#contact" class="link">View Project
+              <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 9L9 2M3.5 2H9v5.5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section" style="padding-top:0">
+      <div class="stack">
+        <div class="section-head">
+          <span class="eyebrow">The Problem</span>
+          <h2 class="h2">A Great Website Doesn't Happen by<br>Accident.</h2>
+        </div>
+        <div class="cards-3">
+          <div class="card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1a1c1b" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>
+            </div>
+            <h3 class="h3 h4">No Clear Direction</h3>
+            <p class="body-text">Jumping straight into design without a robust blueprint leads to disjointed user journeys and zero conversions.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1a1c1b" stroke-width="1.6"><path d="M3 5h18v11H9l-4 4v-4H3z"/></svg>
+            </div>
+            <h3 class="h3 h4">Unclear Messaging</h3>
+            <p class="body-text">Visitors leave within seconds if your copy doesn't instantly communicate your unique value proposition.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1a1c1b" stroke-width="1.6"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>
+            </div>
+            <h3 class="h3 h4">Too Much to Manage</h3>
+            <p class="body-text">Balancing design revisions, copywriting, and technical deployment drains your core operational energy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CORE SERVICES ============ -->
+    <section class="section" id="services" style="padding-top:0">
+      <div class="stack">
+        <div class="section-head">
+          <span class="eyebrow">What We Do</span>
+          <h2 class="h2">Three Essential Elements. One<br>Powerful Website.</h2>
+        </div>
+        <div class="services">
+          <div class="service">
+            <div class="service-body">
+              <div class="line"><svg viewBox="0 0 325 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h325"/></svg></div>
+              <h3 class="h3">Strategizing</h3>
+              <p class="body-text">Laying the structural foundation through audience research, site maps, and conversion-focused user journeys.</p>
+              <ul class="service-list">
+                <li><span class="dot"></span>Wireframing &amp; UX Maps</li>
+                <li><span class="dot"></span>Audience Persona Profiling</li>
+              </ul>
+            </div>
+            <a href="#process" class="link">Learn more
+              <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 9L9 2M3.5 2H9v5.5"/></svg>
+            </a>
+          </div>
+          <div class="service">
+            <div class="service-body">
+              <div class="line"><svg viewBox="0 0 325 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h325"/></svg></div>
+              <h3 class="h3">Scripting</h3>
+              <p class="body-text">Crafting high-impact, persuasive messaging that speaks directly to your ideal clients and drives action.</p>
+              <ul class="service-list">
+                <li><span class="dot"></span>Brand Voice &amp; Tone</li>
+                <li><span class="dot"></span>Page-by-Page Copywriting</li>
+              </ul>
+            </div>
+            <a href="#process" class="link">Learn more
+              <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 9L9 2M3.5 2H9v5.5"/></svg>
+            </a>
+          </div>
+          <div class="service">
+            <div class="service-body">
+              <div class="line"><svg viewBox="0 0 325 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h325"/></svg></div>
+              <h3 class="h3">Managing</h3>
+              <p class="body-text">Overseeing the full lifecycle from design to launch so you never have to chase contractors or fix bugs.</p>
+              <ul class="service-list">
+                <li><span class="dot"></span>End-to-End Oversight</li>
+                <li><span class="dot"></span>Launch &amp; Handoff</li>
+              </ul>
+            </div>
+            <a href="#process" class="link">Learn more
+              <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 9L9 2M3.5 2H9v5.5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SELECTED WORK #2 ============ -->
+    <section class="section" style="background: var(--surface); padding-top: 96px;">
+      <div class="stack">
+        <div class="section-head">
+          <span class="eyebrow">Selected Work</span>
+          <h2 class="h2">Real Results. Exceptional Digital<br>Experiences.</h2>
+          <p class="body-text">Explore recent website transformations and digital foundations we have<br>built for ambitious brands.</p>
+        </div>
+        <div class="work" style="background:#fff">
+          <div class="work-mock"><div class="mock-art" role="img" aria-label="Aura Architects mockup"></div></div>
+          <div class="work-info">
+            <div class="tags">
+              <span class="tag">Strategy</span>
+              <span class="tag">Copywriting</span>
+              <span class="tag">Architecture</span>
+            </div>
+            <h3 class="h3">Aura Architects / Rendered Spaces</h3>
+            <p class="body-text">Editorial design aesthetic with clean typography, high-end agency presentation, and a warm off-white background.</p>
+            <a href="#contact" class="link">View Project
+              <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 9L9 2M3.5 2H9v5.5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW WE WORK ============ -->
+    <section class="section" id="process" style="background: var(--surface)">
+      <div class="stack" style="gap:64px">
+        <div class="section-head">
+          <span class="eyebrow">How We Work</span>
+          <h2 class="h2">A Clear Process. A Better Website.</h2>
+        </div>
+        <div class="process">
+          <div class="step">
+            <div class="line"><svg viewBox="0 0 179 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h179"/></svg></div>
+            <h4 class="h4">Discover</h4>
+            <p class="body-text">Uncovering your goals, audience, and market positioning.</p>
+          </div>
+          <div class="step">
+            <div class="line"><svg viewBox="0 0 179 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h179"/></svg></div>
+            <h4 class="h4">Strategize</h4>
+            <p class="body-text">Structuring user flows and defining core page architecture.</p>
+          </div>
+          <div class="step">
+            <div class="line"><svg viewBox="0 0 179 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h179"/></svg></div>
+            <h4 class="h4">Create</h4>
+            <p class="body-text">Writing compelling copy and designing high-end UI.</p>
+          </div>
+          <div class="step">
+            <div class="line"><svg viewBox="0 0 179 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h179"/></svg></div>
+            <h4 class="h4">Manage</h4>
+            <p class="body-text">Rigorous quality checks and seamless technical integration.</p>
+          </div>
+          <div class="step">
+            <div class="line"><svg viewBox="0 0 179 11" preserveAspectRatio="none" fill="none" stroke="#1a1c1b" stroke-width="1.4"><path d="M0 5.5h179"/></svg></div>
+            <h4 class="h4">Launch Ready</h4>
+            <p class="body-text">Deploying your website to the world with full team training.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="section" id="about">
+      <div class="stack">
+        <div class="section-head">
+          <span class="eyebrow">Why Work With Us</span>
+          <h2 class="h2">More Than a Website. A Thoughtful<br>Digital Foundation.</h2>
+        </div>
+        <div class="why">
+          <div class="why-card">
+            <svg viewBox="0 0 26 26" fill="none" stroke="#1a1c1b" stroke-width="1.6"><circle cx="13" cy="13" r="10"/><circle cx="13" cy="13" r="4"/></svg>
+            <h4 class="h4">Strategic Clarity</h4>
+            <p class="body-text">Every element serves a specific purpose in guiding visitors toward conversion.</p>
+          </div>
+          <div class="why-card">
+            <svg viewBox="0 0 24 22" fill="none" stroke="#1a1c1b" stroke-width="1.6"><path d="M2 3h20v13H9l-5 4v-4H2z"/></svg>
+            <h4 class="h4">Compelling Words</h4>
+            <p class="body-text">Copywriting that articulates your value without corporate jargon.</p>
+          </div>
+          <div class="why-card">
+            <svg viewBox="0 0 22 26" fill="none" stroke="#1a1c1b" stroke-width="1.6"><path d="M13 2L3 15h7l-1 9 10-13h-7z"/></svg>
+            <h4 class="h4">Zero Friction</h4>
+            <p class="body-text">We handle the project management so you can focus on running your business.</p>
+          </div>
+          <div class="why-card" style="padding-bottom:48px">
+            <svg viewBox="0 0 22 26" fill="none" stroke="#1a1c1b" stroke-width="1.6"><path d="M11 2v22M4 9l7-7 7 7"/></svg>
+            <h4 class="h4">Future-Proof</h4>
+            <p class="body-text">Built to scale effortlessly as your brand grows and evolves.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SELECTED WORK #3 ============ -->
+    <section class="section" style="background: var(--surface); padding-top: 96px;">
+      <div class="stack">
+        <div class="section-head">
+          <span class="eyebrow">Selected Work</span>
+          <h2 class="h2">Real Results. Exceptional Digital<br>Experiences.</h2>
+          <p class="body-text">Explore recent website transformations and digital foundations we have<br>built for ambitious brands.</p>
+        </div>
+        <div class="work" style="background:#fff">
+          <div class="work-mock"><div class="mock-art" role="img" aria-label="Aura Architects mockup"></div></div>
+          <div class="work-info">
+            <div class="tags">
+              <span class="tag">Strategy</span>
+              <span class="tag">Copywriting</span>
+              <span class="tag">Architecture</span>
+            </div>
+            <h3 class="h3">Aura Architects / Rendered Spaces</h3>
+            <p class="body-text">Editorial design aesthetic with clean typography, high-end agency presentation, and a warm off-white background.</p>
+            <a href="#contact" class="link">View Project
+              <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 9L9 2M3.5 2H9v5.5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHO WE WORK WITH ============ -->
+    <section class="section" style="background: var(--surface)">
+      <div class="stack">
+        <div class="section-head">
+          <span class="eyebrow">Who We Work With</span>
+          <h2 class="h2">Built for People With Something to<br>Share.</h2>
+        </div>
+        <div class="clients">
+          <div class="client"><span>Startups</span><svg viewBox="0 0 13 13" fill="none" stroke="#1a1c1b" stroke-width="1.3"><path d="M2 11L11 2M4 2h7v7"/></svg></div>
+          <div class="client"><span>Small Businesses</span><svg viewBox="0 0 13 13" fill="none" stroke="#1a1c1b" stroke-width="1.3"><path d="M2 11L11 2M4 2h7v7"/></svg></div>
+          <div class="client"><span>Entrepreneurs</span><svg viewBox="0 0 13 13" fill="none" stroke="#1a1c1b" stroke-width="1.3"><path d="M2 11L11 2M4 2h7v7"/></svg></div>
+          <div class="client"><span>Personal Brands</span><svg viewBox="0 0 13 13" fill="none" stroke="#1a1c1b" stroke-width="1.3"><path d="M2 11L11 2M4 2h7v7"/></svg></div>
+          <div class="client"><span>Service Providers</span><svg viewBox="0 0 13 13" fill="none" stroke="#1a1c1b" stroke-width="1.3"><path d="M2 11L11 2M4 2h7v7"/></svg></div>
+          <div class="client"><span>Growing Businesses</span><svg viewBox="0 0 13 13" fill="none" stroke="#1a1c1b" stroke-width="1.3"><path d="M2 11L11 2M4 2h7v7"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OUR DIFFERENCE ============ -->
+    <section class="section">
+      <div class="stack">
+        <div class="diff">
+          <div class="diff-text">
+            <span class="eyebrow">Our Difference</span>
+            <h2 class="h2">Designed around what actually drives<br>digital success.</h2>
+            <ul class="diff-list">
+              <li><span class="dot"></span><span>STRATEGY</span></li>
+              <li><span class="dot"></span><span>CLARITY</span></li>
+              <li><span class="dot"></span><span>EXECUTION</span></li>
+            </ul>
+          </div>
+          <div class="diff-visual">
+            <div class="skel s1"></div>
+            <div class="skel s2"></div>
+            <div class="skel s3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA + CONTACT FORM ============ -->
+    <section class="cta" id="contact">
+      <div class="cta-inner">
+        <h2>Have a Website Idea? Let's Make It<br>Happen.</h2>
+        <p class="cta-sub">Skip the guesswork and partner with an agency that delivers end-to-end digital excellence.</p>
+        <a href="#contact-form" class="btn-lime">Let's Talk About Your Website</a>
+
+        <form class="cta-form" id="contact-form" novalidate>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000" required />
+          </label>
+          <button type="submit" class="submit-btn" id="submitBtn">Send My Details</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-col" style="padding-bottom:71px">
+          <div class="footer-brand">VISTAR &amp; CO.</div>
+          <p class="muted">Strategy, content, and website management for ambitious brands.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Strategizing</a></li>
+            <li><a href="#services">Scripting</a></li>
+            <li><a href="#services">Managing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" style="padding-bottom:64px">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#contact">hello@vistar.co</a></li>
+            <li>Available worldwide</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-rule">
+        <span class="small">© 2026 VISTAR &amp; CO. All rights reserved.</span>
+        <div class="small-links">
+          <a href="#top">Privacy Policy</a>
+          <a href="#top">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ============ BOTTOM BAR ============ -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span class="small">© 2024 [YOUR BRAND NAME]. All rights reserved.</span>
+      <div class="small-links">
+        <a href="#top">Privacy Policy</a>
+        <a href="#top">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SCRIPT ============ -->
+  <script>
+    (function () {
+      var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwG3MdZA51j7G4zYZIgrHk_PePgIpJIDVfv-zCEOSao-GlQxbw0o_D9e6WeXF9EfELFeA/exec";
+
+      var form = document.getElementById("contact-form");
+      var statusEl = document.getElementById("formStatus");
+      var submitBtn = document.getElementById("submitBtn");
+
+      function setStatus(message, type) {
+        statusEl.textContent = message;
+        statusEl.className = "form-status" + (type ? " " + type : "");
+      }
+
+      function showSuccess() {
+        setStatus("Thank you! We'll be in touch shortly.", "ok");
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send My Details";
+      }
+
+      function showError() {
+        setStatus("Something went wrong. Please try again.", "err");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send My Details";
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var phone = document.getElementById("phone").value.trim();
+
+        if (!name || !email || !phone) {
+          setStatus("Please fill in name, email and phone.", "err");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        setStatus("", "");
+
+        var url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+
+        fetch(url, { method: "GET", mode: "no-cors" })
+          .then(function () { showSuccess(); })
+          .catch(function () { showError(); });
+      });
+    })();
+  </script>
+</body>
+</html>
